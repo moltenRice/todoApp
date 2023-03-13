@@ -1,34 +1,34 @@
 import React, { useState } from 'react';
 import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View} from 'react-native';
-import Task from './components/Task';
+import Bug from './components/Bug';
 
 export default function App() {
-  const [task, setTask] = useState();
+  const [bug, setBug] = useState();
   
-  const handleAddTask = () => {
-    console.log(task);
+  const handleAddBug = () => {
+    console.log(bug);
   }
 
   return (
     <View style={styles.container}>
       
-    {/* Today's Tasks */}
-      <View style={styles.tasksWrapper}>
-        <Text style={styles.sectionTitle}>Today's Tasks</Text>
+    {/* Today's Bugs */}
+      <View style={styles.bugsWrapper}>
+        <Text style={styles.sectionTitle}>Reported Bugs</Text>
 
         <View style={styles.items}>
-          {/* This is where the task will go */}
-          <Task text={'Task 1'}/>
-          <Task text={'Task 2'}/>
+          {/* This is where the bug will go */}
+          <Bug text={'Bug 1'}/>
+          <Bug text={'Bug 2'}/>
         </View>
       </View>
-      {/* Write a task */}
+      {/* Write a bug */}
       <KeyboardAvoidingView
         behavior={Platform.OS === "ios" ? "padding" : "height"}
-        style={styles.writeTaskWrapper}>
+        style={styles.writeBugWrapper}>
 
-        <TextInput style={styles.input} placeholder={'Write a task'} value={task} onChangeText={text=>setTask(text)} />
-        <TouchableOpacity onPress={()=>handleAddTask()} >
+        <TextInput style={styles.input} placeholder={'Enter your bug'} value={bug} onChangeText={text=>setBug(text)} />
+        <TouchableOpacity onPress={()=>handleAddBug()} >
           <View style={styles.addWrapper}>
             <Text style={styles.addText}>+</Text>
           </View>
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#E8EAED',
   },
-    tasksWrapper: {
+    bugsWrapper: {
       paddingTop: 80,
       paddingHorizontal: 20,
     },
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     items: {
       marginTop: 30,
     },
-    writeTaskWrapper:{
+    writeBugWrapper:{
       position: 'absolute',
       bottom: 60,
       width: '100%',
